@@ -1,0 +1,3 @@
+{"id":"policy-001","question":"What is the approval threshold for a high-value payment?","relevant_document_ids":["payments-policy-v3"],"expected_facts":["approval threshold","effective date"],"risk":"high"}
+{"id":"ops-002","question":"How should an unavailable downstream service be handled?","relevant_document_ids":["resilience-runbook"],"expected_facts":["retry policy","escalation path"],"risk":"medium"}
+{"id":"security-003","question":"Who can access restricted customer records?","relevant_document_ids":["data-access-standard"],"expected_facts":["role entitlement","audit requirement"],"risk":"high"}
