@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: ingestion_rag
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: local-only-change-me
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag -d ingestion_rag"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
