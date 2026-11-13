@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: pgvector-rag-db
+    environment:
+      POSTGRES_DB: pgvector_rag
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: local-only-change-me
+    ports: ["5432:5432"]
+    volumes: [pgvector_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag -d pgvector_rag"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  pgvector_data:
