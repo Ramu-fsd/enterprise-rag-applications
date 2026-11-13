@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: multimodal-rag
+server:
+  port: 8080
