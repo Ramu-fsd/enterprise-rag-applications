@@ -1,0 +1,23 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: spring-ai-rag
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/spring_ai_rag}
+    username: ${SPRING_DATASOURCE_USERNAME:rag}
+    password: ${SPRING_DATASOURCE_PASSWORD:local-only-change-me}
+  ai:
+    openai:
+      api-key: ${SPRING_AI_OPENAI_API_KEY}
+      chat.options.model: ${SPRING_AI_OPENAI_CHAT_MODEL:gpt-4o-mini}
+      embedding.options.model: ${SPRING_AI_OPENAI_EMBEDDING_MODEL:text-embedding-3-small}
+    vectorstore.pgvector:
+      initialize-schema: true
+      dimensions: 1536
+      distance-type: COSINE_DISTANCE
+      index-type: HNSW
+      schema-name: public
+      table-name: spring_ai_vectors
+management:
+  endpoints.web.exposure.include: health,info,metrics
